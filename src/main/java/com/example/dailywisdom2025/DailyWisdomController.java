@@ -1,7 +1,7 @@
-package com.example.springboot2025;
+package com.example.dailywisdom2025;
 
-import com.example.springboot2025.domain.entity.DailyWisdom;
-import com.example.springboot2025.infrastructure.persistence.DailyWisdomRepository;
+import com.example.dailywisdom2025.domain.entity.DailyWisdom;
+import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class DailyWisdomController {

@@ -1,8 +1,6 @@
-package com.example.springboot2025.domain.entity;
+package com.example.dailywisdom2025.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "dailywisdom")
