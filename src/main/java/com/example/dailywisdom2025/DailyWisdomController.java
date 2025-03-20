@@ -1,6 +1,7 @@
 package com.example.dailywisdom2025;
 
 import com.example.dailywisdom2025.domain.entity.DailyWisdom;
+import com.example.dailywisdom2025.domain.DailyWisdomService;
 import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DailyWisdomController {
 
     DailyWisdomRepository dailyWisdomRepository;
+    DailyWisdomService dailyWisdomService;
 
-    public DailyWisdomController(DailyWisdomRepository dailyWisdomRepository) {
+    public DailyWisdomController(DailyWisdomRepository dailyWisdomRepository, DailyWisdomService dailyWisdomService) {
         this.dailyWisdomRepository = dailyWisdomRepository;
+        this.dailyWisdomService = dailyWisdomService;
     }
 
     @GetMapping("/")
@@ -26,7 +29,7 @@ public class DailyWisdomController {
 
     @RequestMapping("dailywisdom")
     String getAllDailyWisdom (Model model) {
-        DailyWisdom latestWisdom = dailyWisdomRepository.findTopByOrderByIdDesc().orElse(null);
+        DailyWisdom latestWisdom = dailyWisdomService.getLatestDailyWisdom();
         model.addAttribute("dailyWisdomRepository", latestWisdom);
         return "seeMessage";
     }
