@@ -13,7 +13,6 @@ public class DailyWisdom2025Application {
     public static void main(String[] args) {
         SpringApplication.run(DailyWisdom2025Application.class, args);
     }
-
     @Bean
     CommandLineRunner runner (DailyWisdomRepository dailyWisdomRepository) {
         return args -> {

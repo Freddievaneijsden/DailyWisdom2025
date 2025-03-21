@@ -5,10 +5,9 @@ import com.example.dailywisdom2025.domain.DailyWisdomService;
 import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -27,11 +26,10 @@ public class DailyWisdomController {
         return "index";
     }
 
-    @RequestMapping("dailywisdom")
-    String getAllDailyWisdom (Model model) {
-        DailyWisdom latestWisdom = dailyWisdomService.getLatestDailyWisdom();
-        model.addAttribute("dailyWisdomRepository", latestWisdom);
-        return "seeMessage";
+    @GetMapping("dailywisdomrespons")
+    @ResponseBody
+    DailyWisdom getLatestDailyWisdom(Model model) {
+        return dailyWisdomService.getLatestDailyWisdom();
     }
 
     @PostMapping("/addMessage")
@@ -40,5 +38,18 @@ public class DailyWisdomController {
         newMessage.setMessage(message);
         dailyWisdomRepository.save(newMessage);
         return "redirect:/";
+    }
+
+    @RequestMapping("/dailywisdom")
+    String getLatestDailyWisdomHTML(Model model) {
+        var latestDailyWisdom = dailyWisdomService.getLatestDailyWisdom();
+        model.addAttribute("dailyWisdomRepository", latestDailyWisdom);
+        return "seeMessage";
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    List<DailyWisdom> getAllDailyWisdom (Model model){
+        return dailyWisdomService.getAllDailyWisdom();
     }
 }

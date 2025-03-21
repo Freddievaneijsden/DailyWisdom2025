@@ -5,6 +5,8 @@ import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomReposit
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class DailyWisdomService {
@@ -17,5 +19,9 @@ public class DailyWisdomService {
 
     public DailyWisdom getLatestDailyWisdom() {
         return dailyWisdomRepository.findTopByOrderByIdDesc().orElse(null);
+    }
+
+    public List<DailyWisdom> getAllDailyWisdom() {
+        return dailyWisdomRepository.findAll();
     }
 }
