@@ -13,15 +13,15 @@ public class DailyWisdom2025Application {
     public static void main(String[] args) {
         SpringApplication.run(DailyWisdom2025Application.class, args);
     }
-    @Bean
-    CommandLineRunner runner (DailyWisdomRepository dailyWisdomRepository) {
-        return args -> {
-            if (dailyWisdomRepository.count() == 0) {
-                DailyWisdom dailyWisdom = new DailyWisdom();
-                dailyWisdom.setMessage("Du är bög");
-                dailyWisdomRepository.save(dailyWisdom);
-            }
-        };
-    }
+//    @Bean
+//    CommandLineRunner runner (DailyWisdomRepository dailyWisdomRepository) {
+//        return args -> {
+//            if (dailyWisdomRepository.count() == 0) {
+//                DailyWisdom dailyWisdom = new DailyWisdom();
+//                dailyWisdom.setMessage("Du är bög");
+//                dailyWisdomRepository.save(dailyWisdom);
+//            }
+//        };
+//    }
 
 }
