@@ -48,8 +48,9 @@ public class DailyWisdomController {
     }
 
     @GetMapping("/all")
-    @ResponseBody
-    List<DailyWisdom> getAllDailyWisdom (Model model){
-        return dailyWisdomService.getAllDailyWisdom();
+    String getAllDailyWisdom (Model model){
+        var wisdomList = dailyWisdomService.getAllDailyWisdom();
+        model.addAttribute("wisdomList", wisdomList);
+        return "dailyWisdomList";
     }
 }

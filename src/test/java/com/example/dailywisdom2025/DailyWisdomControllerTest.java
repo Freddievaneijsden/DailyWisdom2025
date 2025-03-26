@@ -44,7 +44,6 @@ class DailyWisdomControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].id").value(1))
-
                 .andExpect(jsonPath("$").isArray());
     }
 
