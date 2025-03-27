@@ -1,5 +1,6 @@
 package com.example.dailywisdom2025;
 
+import com.example.dailywisdom2025.controller.DailyWisdomController;
 import com.example.dailywisdom2025.domain.DailyWisdomService;
 import com.example.dailywisdom2025.domain.entity.DailyWisdom;
 import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
