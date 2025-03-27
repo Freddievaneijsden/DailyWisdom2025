@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@EnableWebSecurity
 public class DailyWisdomController {
 
     DailyWisdomRepository dailyWisdomRepository;
