@@ -3,12 +3,14 @@ package com.example.dailywisdom2025.controller;
 import com.example.dailywisdom2025.domain.entity.DailyWisdom;
 import com.example.dailywisdom2025.domain.DailyWisdomService;
 import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@EnableWebSecurity
 public class DailyWisdomController {
 
     DailyWisdomRepository dailyWisdomRepository;
