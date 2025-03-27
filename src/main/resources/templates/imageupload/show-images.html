@@ -27,17 +27,14 @@
 <body>
 
 <div class="container mt-5">
-    <h2 class="text-center">Uploaded Images</h2>
+    <h2 class="text-center">Wimages</h2>
     <a href="/uploadimage" class="btn btn-primary mb-3">Back to Upload</a>
 
     <div class="row">
         <div th:each="image : ${images}" class="col-md-4 mb-3">
             <div class="card">
                 <div class="image-container">
-                    <img th:src="@{'/uploads/' + ${image}}" class="card-img-top" alt="Uploaded Image">
-                </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${image}"></p>
+                    <img th:src="@{'/uploads/' + ${image}}" class="card-img-top" alt="Uploaded Wimage">
                 </div>
             </div>
         </div>
