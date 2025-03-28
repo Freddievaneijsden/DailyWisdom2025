@@ -10,17 +10,19 @@
         .image-container {
             overflow: hidden;
             position: relative;
+            border-radius: 10px;
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
         }
 
         .image-container img:hover {
             transform: scale(1.1);
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -28,8 +30,10 @@
 
 <div class="container mt-5">
     <h2 class="text-center">Wimages</h2>
-    <a href="/uploadimage" class="btn btn-primary mb-3">Upload Wimage</a>
-
+    <div class="d-flex gap-2 mb-3">
+        <a href="/uploadimage" class="btn btn-primary">Upload Wimage</a>
+        <a href="/" class="btn btn-primary">Meny</a>
+    </div>
     <div class="row">
         <div th:each="image : ${images}" class="col-md-4 mb-3">
             <div class="card">
