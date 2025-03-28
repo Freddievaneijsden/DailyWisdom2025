@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div th:each="image : ${images}" class="col-md-4 mb-3">
-            <div class="card">
+            <div>
                 <div class="image-container">
                     <img th:src="@{'/uploads/' + ${image}}" class="card-img-top" alt="Uploaded Wimage">
                 </div>
