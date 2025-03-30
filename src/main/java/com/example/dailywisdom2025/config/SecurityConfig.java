@@ -17,28 +17,34 @@ package com.example.dailywisdom2025.config;
 //import org.springframework.security.web.SecurityFilterChain;
 //import org.springframework.security.web.authentication.logout.LogoutFilter;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 @Configuration
 //@EnableMethodSecurity
 public class SecurityConfig {
 
-//    @Bean
-////    @Order(1) Multiply SecurityFilter
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
+    @Bean
+//    @Order(1) Multiply SecurityFilter
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .oauth2Login(Customizer.withDefaults())
 //                .addFilterAfter(new ApiKeyAuthenticationFilter(), LogoutFilter.class)
-////                .formLogin(Customizer.withDefaults()) //Authentication method, redirect to root /
-//                .authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) ->
-//                        authorizationManagerRequestMatcherRegistry
-//                                .requestMatchers("/login").permitAll()
-//                                .requestMatchers("/upload").hasRole("ADMIN")
-//                                .requestMatchers("/**").authenticated()
+//                .formLogin(Customizer.withDefaults()) //Authentication method, redirect to root /
+                .authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) ->
+                        authorizationManagerRequestMatcherRegistry
+                                .requestMatchers("/login").permitAll()
+                                .requestMatchers("/upload").hasRole("ADMIN")
+                                .requestMatchers("/**").authenticated()
 //                                .requestMatchers("/api/index").hasRole("USER")
-//                                .anyRequest().denyAll() //Everything not listed above is denied
-//                        );
-//        return http.build();
-//    }
+                                .anyRequest().denyAll() //Everything not listed above is denied
+                        );
+        return http.build();
+    }
 
 //    @Bean
 //    PasswordEncoder passwordEncoder() {
