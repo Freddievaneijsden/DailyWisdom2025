@@ -1,10 +1,12 @@
 package com.example.dailywisdom2025.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -66,5 +68,11 @@ public class UploadController {
 
         model.addAttribute("msg", "Uploaded image: " + file.getOriginalFilename());
         return "imageupload/index"; // Show form again with success message
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    String user(){
+        return "User: " + SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
