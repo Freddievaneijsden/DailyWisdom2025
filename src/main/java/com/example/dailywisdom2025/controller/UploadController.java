@@ -1,5 +1,9 @@
 package com.example.dailywisdom2025.controller;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,8 +75,12 @@ public class UploadController {
     }
 
     @GetMapping("/user")
-    @ResponseBody
-    String user(){
-        return "User: " + SecurityContextHolder.getContext().getAuthentication().getName();
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Returns current user",
+                    content = { @Content (mediaType = ("application/json"))}
+            )})
+    public ResponseEntity<String> user(){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return ResponseEntity.ok("User: " + username);
     }
 }

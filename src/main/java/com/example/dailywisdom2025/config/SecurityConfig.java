@@ -40,8 +40,9 @@ public class SecurityConfig {
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/upload").hasRole("ADMIN")
                                 .requestMatchers("/**").authenticated()
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui.yaml").permitAll()
 //                                .requestMatchers("/api/index").hasRole("USER")
-                                .anyRequest().denyAll() //Everything not listed above is denied
+//                                .anyRequest().denyAll() //Everything not listed above is denied
                         );
         return http.build();
     }
