@@ -4,6 +4,8 @@ import com.example.dailywisdom2025.domain.entity.DailyWisdom;
 import com.example.dailywisdom2025.domain.DailyWisdomService;
 import com.example.dailywisdom2025.infrastructure.persistence.DailyWisdomRepository;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.core.Authentication;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class DailyWisdomController {
 
-    DailyWisdomRepository dailyWisdomRepository;
     DailyWisdomService dailyWisdomService;
 
-    public DailyWisdomController(DailyWisdomRepository dailyWisdomRepository, DailyWisdomService dailyWisdomService) {
-        this.dailyWisdomRepository = dailyWisdomRepository;
+    public DailyWisdomController(DailyWisdomService dailyWisdomService) {
         this.dailyWisdomService = dailyWisdomService;
     }
 
@@ -33,9 +33,7 @@ public class DailyWisdomController {
 
     @PostMapping("/addMessage")
     public String addDailyWisdom(@RequestParam String message) {
-        DailyWisdom newMessage = new DailyWisdom();
-        newMessage.setMessage(message);
-        dailyWisdomRepository.save(newMessage);
+        dailyWisdomService.addNewDailyWisdom(message);
         return "redirect:/";
     }
 

@@ -24,4 +24,10 @@ public class DailyWisdomService {
     public List<DailyWisdom> getAllDailyWisdom() {
         return dailyWisdomRepository.findAll();
     }
+
+    public void addNewDailyWisdom(String message) {
+        DailyWisdom newMessage = new DailyWisdom();
+        newMessage.setMessage(message);
+        dailyWisdomRepository.save(newMessage);
+    }
 }

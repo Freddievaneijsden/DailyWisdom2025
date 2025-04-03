@@ -32,17 +32,20 @@ public class SecurityConfig {
 //    @Order(1) Multiply SecurityFilter
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .oauth2Login(Customizer.withDefaults())
 //                .addFilterAfter(new ApiKeyAuthenticationFilter(), LogoutFilter.class)
 //                .formLogin(Customizer.withDefaults()) //Authentication method, redirect to root /
                 .authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) ->
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/login").permitAll()
-                                .requestMatchers("/upload").hasRole("ADMIN")
+//                                .requestMatchers("/upload").hasRole("ADMIN")
+//                                .requestMatchers("/seeMessage").hasRole("ADMIN")
                                 .requestMatchers("/**").authenticated()
-                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui.yaml").permitAll()
+                                .requestMatchers("/graphiql").authenticated()
+//                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui.yaml").permitAll()
 //                                .requestMatchers("/api/index").hasRole("USER")
-//                                .anyRequest().denyAll() //Everything not listed above is denied
+                                .anyRequest().denyAll()//Everything not listed above is denied
                         );
         return http.build();
     }
